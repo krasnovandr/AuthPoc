@@ -80,7 +80,7 @@ namespace IdentityServer
             //    {
             //        options.ClientId = "708996912208-9m4dkjb5hscn7cjrn5u0r4tbgkbj1fko.apps.googleusercontent.com";
             //        options.ClientSecret = "wdfPY6t8H8cecgjlxud__4Gh";
-            //    }).ad
+            //    })
             //    .AddOpenIdConnect("oidc", "OpenID Connect", options =>
             //    {
             //        options.Authority = "https://demo.identityserver.io/";

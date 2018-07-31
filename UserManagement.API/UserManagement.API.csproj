@@ -20,6 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\UserManagement.DI\UserManagement.DI.csproj" />
     <ProjectReference Include="..\UserManagement.Notification\UserManagement.Notification.csproj" />
   </ItemGroup>
 

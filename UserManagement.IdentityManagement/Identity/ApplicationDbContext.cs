@@ -1,7 +1,8 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using UserManagement.IdentityManagement.Identity;
 
-namespace IdentityServer.AspNetIdentity
+namespace UserManagement.API.Identity
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
@@ -13,6 +14,9 @@ namespace IdentityServer.AspNetIdentity
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
+
+            builder.Entity<PreviousPassword>()
+                .HasKey(c => new { c.PasswordHash, c.UserId });
             // Customize the ASP.NET Identity model and override the defaults if needed.
             // For example, you can rename the ASP.NET Identity table names and more.
             // Add your customizations after calling base.OnModelCreating(builder);

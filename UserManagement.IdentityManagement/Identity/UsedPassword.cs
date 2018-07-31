@@ -1,8 +1,9 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using UserManagement.API.Identity;
 
-namespace UserManagement.API.Identity
+namespace UserManagement.IdentityManagement.Identity
 {
     public class PreviousPassword
     {

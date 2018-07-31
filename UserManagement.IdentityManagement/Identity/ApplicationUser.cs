@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Identity;
+using UserManagement.IdentityManagement.Identity;
 
 namespace UserManagement.API.Identity
 {

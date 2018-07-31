@@ -5,9 +5,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using UserManagement.API.Identity;
 using UserManagement.Common;
 
-namespace UserManagement.API.Identity
+namespace UserManagement.IdentityManagement.Identity
 {
     public class CustomUserManager : UserManager<ApplicationUser>
     {
@@ -69,6 +70,7 @@ namespace UserManagement.API.Identity
         {
             var appStore = Store as ApplicationUserStore;
             Guard.ArgumentNotNull(nameof(appStore), appStore);
+
             await appStore.AddToPreviousPasswordsAsync(user, PasswordHasher.HashPassword(user, newPassword));
         }
 

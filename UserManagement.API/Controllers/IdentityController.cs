@@ -1,18 +1,14 @@
 ﻿using System;
-using System.IO;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using UserManagement.API.Identity;
 using UserManagement.API.Models;
 using UserManagement.API.Models.Dtos;
 using UserManagement.Notification;
-using UserManagement.Notification.EmailTemplates;
 using UserManagement.Notification.Models;
 
 namespace UserManagement.API.Controllers
@@ -21,24 +17,18 @@ namespace UserManagement.API.Controllers
     public class IdentityController : Controller
     {
         private readonly UserManager<ApplicationUser> _userManager;
-        //private readonly SignInManager<ApplicationUser> _signInManager;
-        //private readonly IEmailSender _emailSender;
         private readonly ILogger<IdentityController> _logger;
         private readonly INotificationService _notificationService;
 
 
         public IdentityController(
             UserManager<ApplicationUser> userManager,
-            //SignInManager<ApplicationUser> signInManager,
             ILogger<IdentityController> logger,
-            //IEmailSender emailSender,
             IHostingEnvironment appEnvironment,
             INotificationService notificationService)
         {
             _userManager = userManager;
-            //_signInManager = signInManager;
             _logger = logger;
-            //_emailSender = emailSender;
             _notificationService = notificationService;
         }
 

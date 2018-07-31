@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Reflection;
-using IdentityServer.AspNetIdentity;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -8,6 +7,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
+using UserManagement.API.Identity;
+using UserManagement.DI;
 
 namespace IdentityServer
 {
@@ -24,16 +25,10 @@ namespace IdentityServer
 
         public void ConfigureServices(IServiceCollection services)
         {
-            string usersDatabase = Configuration.GetConnectionString("AspNetUsersDb");
             string identityServerDatabase = Configuration.GetConnectionString("IdentityServerConfigurationDb");
             var migrationsAssembly = typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
 
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(usersDatabase));
-
-            services.AddIdentity<ApplicationUser, IdentityRole>()
-                .AddEntityFrameworkStores<ApplicationDbContext>()
-                .AddDefaultTokenProviders();
+            services.InstallIdentityDependencies(Configuration);
 
             services.AddMvc();
 

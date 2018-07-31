@@ -17,6 +17,8 @@ using Microsoft.Extensions.Options;
 using SendGrid;
 using Swashbuckle.AspNetCore.Swagger;
 using UserManagement.API.Identity;
+using UserManagement.DI;
+using UserManagement.IdentityManagement;
 using UserManagement.Notification;
 using UserManagement.Notification.EmailBuilders;
 using UserManagement.Notification.EmailClient;
@@ -40,29 +42,7 @@ namespace UserManagement.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-
-            services.AddIdentity<ApplicationUser, IdentityRole>(options =>
-                {
-                    // Password settings
-                    options.Password.RequireDigit = true;
-                    options.Password.RequiredLength = 8;
-                    options.Password.RequiredUniqueChars = 2;
-                    options.Password.RequireLowercase = true;
-                    options.Password.RequireNonAlphanumeric = false;
-                    options.Password.RequireUppercase = true;
-                    options.User.RequireUniqueEmail = true;
-                    options.SignIn.RequireConfirmedEmail = true;
-
-                    options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(30);
-                    options.Lockout.MaxFailedAccessAttempts = 10;
-                    options.Lockout.AllowedForNewUsers = true;
-
-                })
-                .AddEntityFrameworkStores<ApplicationDbContext>()
-                .AddDefaultTokenProviders()
-                .AddUserManager<CustomUserManager>()
-                .AddUserStore<ApplicationUserStore>();
+            services.InstallIdentityDependencies(Configuration);
 
             services.AddSwaggerGen(options =>
             {
@@ -93,11 +73,8 @@ namespace UserManagement.API
                 var emailBuilderRetriever = new EmailBuilderRetriever(serviceProvider, emailConnectionSettings);
                 return new NotificationService(sendGridClient, emailBuilderRetriever);
             });
-
-            // Add application services.
-            //services.AddSingleton<IEmailSender, EmailSender>();
-            services.Configure<AuthMessageSenderOptions>(Configuration);
             services.AddMvc();
+
 
             var assembly = typeof(INotificationService).GetTypeInfo().Assembly;
             var embeddedFileProvider = new EmbeddedFileProvider(

@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using UserManagement.API.Identity;
 
-namespace UserManagement.API.Identity
+namespace UserManagement.IdentityManagement.Identity
 {
     public class ApplicationUserStore : UserStore<ApplicationUser>
     {

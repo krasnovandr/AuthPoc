@@ -2,12 +2,12 @@
 using System.Linq;
 using System.Security.Claims;
 using IdentityModel;
-using IdentityServer.AspNetIdentity;
 using IdentityServer4.EntityFramework.DbContexts;
 using IdentityServer4.EntityFramework.Mappers;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using UserManagement.API.Identity;
 
 namespace IdentityServer
 {

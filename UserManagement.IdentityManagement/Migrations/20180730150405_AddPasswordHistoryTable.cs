@@ -1,11 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
-using System;
-using System.Collections.Generic;
 
-namespace IdentityServer.Data.Migrations.AspNetIdentity
+namespace UserManagement.IdentityManagement.Migrations
 {
-    public partial class InitialAspNetIdentityDbMigration : Migration
+    public partial class AddPasswordHistoryTable : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -154,6 +153,25 @@ namespace IdentityServer.Data.Migrations.AspNetIdentity
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "PreviousPassword",
+                columns: table => new
+                {
+                    PasswordHash = table.Column<string>(nullable: false),
+                    UserId = table.Column<string>(nullable: false),
+                    CreateDate = table.Column<DateTimeOffset>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PreviousPassword", x => new { x.PasswordHash, x.UserId });
+                    table.ForeignKey(
+                        name: "FK_PreviousPassword_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -192,6 +210,11 @@ namespace IdentityServer.Data.Migrations.AspNetIdentity
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_PreviousPassword_UserId",
+                table: "PreviousPassword",
+                column: "UserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -210,6 +233,9 @@ namespace IdentityServer.Data.Migrations.AspNetIdentity
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "PreviousPassword");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

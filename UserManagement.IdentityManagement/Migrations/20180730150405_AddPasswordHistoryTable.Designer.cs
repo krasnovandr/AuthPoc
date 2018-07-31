@@ -14,7 +14,7 @@ namespace UserManagement.API.Migrations
     [Migration("20180730150405_AddPasswordHistoryTable")]
     partial class AddPasswordHistoryTable
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

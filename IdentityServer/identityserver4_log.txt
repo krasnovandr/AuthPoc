@@ -1612,3 +1612,153 @@ System.InvalidOperationException: Scheme already exists: Identity.Application
 2018-07-31 11:13:54.454 +03:00 [DBG] Found ["openid","profile"] identity scopes in database
 2018-07-31 11:13:54.469 +03:00 [INF] Profile service returned to the following claim types: sub preferred_username name
 2018-07-31 11:13:54.474 +03:00 [DBG] End userinfo request
+2018-07-31 12:41:28.118 +03:00 [DBG] Using Identity.Application as default scheme for authentication
+2018-07-31 12:41:28.185 +03:00 [DBG] Using Identity.External as default scheme for sign-in
+2018-07-31 12:41:28.189 +03:00 [DBG] Using Identity.External as default scheme for sign-out
+2018-07-31 12:41:28.192 +03:00 [DBG] Using Identity.Application as default scheme for challenge
+2018-07-31 12:41:28.195 +03:00 [DBG] Using Identity.Application as default scheme for forbid
+2018-07-31 12:41:28.450 +03:00 [DBG] Starting token cleanup
+2018-07-31 12:43:34.083 +03:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2018-07-31 12:43:34.113 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2018-07-31 12:43:34.115 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2018-07-31 12:43:34.123 +03:00 [DBG] Start discovery request
+2018-07-31 12:43:34.974 +03:00 [DBG] Found ["openid","profile","api1"] as all scopes in database
+2018-07-31 12:43:35.300 +03:00 [DBG] Request path /.well-known/openid-configuration/jwks matched to endpoint type Discovery
+2018-07-31 12:43:35.303 +03:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryKeyEndpoint
+2018-07-31 12:43:35.305 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2018-07-31 12:43:35.310 +03:00 [DBG] Start key discovery request
+2018-07-31 12:43:35.446 +03:00 [DBG] Request path /connect/endsession matched to endpoint type Endsession
+2018-07-31 12:43:35.453 +03:00 [DBG] Endpoint enabled: Endsession, successfully created handler: IdentityServer4.Endpoints.EndSessionEndpoint
+2018-07-31 12:43:35.459 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.EndSessionEndpoint for /connect/endsession
+2018-07-31 12:43:35.484 +03:00 [DBG] Processing signout request for ddb5688a-19ff-4d46-8199-645663391740
+2018-07-31 12:43:35.495 +03:00 [DBG] Start end session request validation
+2018-07-31 12:43:35.505 +03:00 [DBG] Start identity token validation
+2018-07-31 12:43:35.944 +03:00 [DBG] mvc found in database: true
+2018-07-31 12:43:35.948 +03:00 [DBG] Client found: mvc / MVC Client
+2018-07-31 12:43:36.020 +03:00 [ERR] User marked as not active: ddb5688a-19ff-4d46-8199-645663391740
+2018-07-31 12:43:36.032 +03:00 [INF] End session request validation failure: Error validating id token hint
+{
+  "SubjectId": "unknown",
+  "Raw": {
+    "post_logout_redirect_uri": "http://localhost:5002/signout-callback-oidc",
+    "id_token_hint": "eyJhbGciOiJSUzI1NiIsImtpZCI6ImY2NzZhNjNmM2QxZmRmYTNmMzgyZGNmZDNkYjNkZjc3IiwidHlwIjoiSldUIn0.eyJuYmYiOjE1MzMwMjQ4MzQsImV4cCI6MTUzMzAyNTEzNCwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo1MDAwIiwiYXVkIjoibXZjIiwibm9uY2UiOiI2MzY2ODYyMTU4MTY4MzY0MTkuT1dWbE16TmhOakV0WVdGa01TMDBPV1k0TFdJNU5EY3RPVFJpWkRjek1HWm1NRFk0Wm1Jd1pUUTFPVGd0WWpGbU1DMDBaakl4TFRrM016UXRaV1ZpWW1FM01UbGxORFl5IiwiaWF0IjoxNTMzMDI0ODM0LCJhdF9oYXNoIjoibU43aHM2SFg0STJ6VGpmOEJZZUhvZyIsInNpZCI6IjBhM2M4YTQ4NzE5OGQ4NDkzODgzNzM0Y2JhYjU3M2QxIiwic3ViIjoiZGRiNTY4OGEtMTlmZi00ZDQ2LTgxOTktNjQ1NjYzMzkxNzQwIiwiYXV0aF90aW1lIjoxNTMzMDI0ODI4LCJpZHAiOiJsb2NhbCIsImFtciI6WyJwd2QiXX0.DwZNMcZeXWyIT_hWv4LzLA5h3QBU6vcbJrKjzeck5Bk3p46yx6lq-swIyfcF58PJo8NhA6PoSM0bPhVGfpP0qgR7yptEJCjyeZcgeAVCNeVD9Xo-CaSf4L7yoWBBjNuRBKa_4OstWS99zFZd3SYGZo2shY3Dz3JAj8BL683BMEnedXGxJB5dr_6BlvTHyrItd96IHskgPjtemBSw0bOGgeacJXVvzBgRFXYgpendEzzud77RFcL4XiL75gX97HEXm2RbJfArXDSGcrOaUh2j4c40jslfaaH8fOgRIiPaOoPYK5upBAzgmmX06iKSYG_Hmc5qvzvBdNkW7EUK-KHgVQ",
+    "state": "CfDJ8KuqC1l7QeZCrHnUtlrKrzINMfwZbEYMKmaejyGE6hDWldiNFgYYVmbm64WM1_mB04PNyMgdPKp9g82-Pr_MsMAgI8uJghGDXt-aOIf6unjMdW4IUqSTp2D1nmQDZgqigToa6S947386TOA7G6F5e2TCjlNQ3_CJCHzuTPsXFPN9",
+    "x-client-SKU": "ID_NET",
+    "x-client-ver": "2.1.4.0"
+  }
+}
+2018-07-31 12:43:36.037 +03:00 [ERR] Error processing end session request Invalid request
+2018-07-31 12:43:39.438 +03:00 [DBG] Request path /connect/authorize matched to endpoint type Authorize
+2018-07-31 12:43:39.447 +03:00 [DBG] Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
+2018-07-31 12:43:39.449 +03:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
+2018-07-31 12:43:39.456 +03:00 [DBG] Start authorize request
+2018-07-31 12:43:39.465 +03:00 [DBG] User in authorize request: ddb5688a-19ff-4d46-8199-645663391740
+2018-07-31 12:43:39.472 +03:00 [DBG] Start authorize request protocol validation
+2018-07-31 12:43:39.527 +03:00 [DBG] mvc found in database: true
+2018-07-31 12:43:39.534 +03:00 [DBG] Checking for PKCE parameters
+2018-07-31 12:43:39.537 +03:00 [DBG] No PKCE used.
+2018-07-31 12:43:39.595 +03:00 [DBG] Found ["openid","profile"] identity scopes in database
+2018-07-31 12:43:39.718 +03:00 [DBG] Found ["api1"] API scopes in database
+2018-07-31 12:43:39.744 +03:00 [DBG] Found ["openid","profile"] identity scopes in database
+2018-07-31 12:43:39.763 +03:00 [DBG] Found ["api1"] API scopes in database
+2018-07-31 12:43:39.777 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2018-07-31 12:43:39.790 +03:00 [INF] ValidatedAuthorizeRequest
+{
+  "ClientId": "mvc",
+  "ClientName": "MVC Client",
+  "RedirectUri": "http://localhost:5002/signin-oidc",
+  "AllowedRedirectUris": [
+    "http://localhost:5002/signin-oidc"
+  ],
+  "SubjectId": "ddb5688a-19ff-4d46-8199-645663391740",
+  "ResponseType": "code id_token",
+  "ResponseMode": "form_post",
+  "GrantType": "hybrid",
+  "RequestedScopes": "openid profile api1 offline_access",
+  "State": "CfDJ8KuqC1l7QeZCrHnUtlrKrzJES7Wd9AKXs3mxa2yOdi-YfjOuXKTR8rnFZG1PpJhv3r-eU0C5akTvOJmncvxIEKsysRiNOq9SW05a6jKLthyCfi7jJJqSOkt492-6IrYHKaFDbfRnlRUQd_qv0z0Uchw1OL1zmOpodxbGSsmDyn-NpDs28FjepNqRjdrwCUMm3cIT_UaFZOiQfkNTDtgRZvujvs8xpuhAFRFEbN8Dt7LzmDLbW05yaNzznqQF1rD2twDo_BMM_4piXC7wN-_MrUsjKgzB-E_e72NBnZeOl-TKT5GrnC11gnSSnUMH7-5LDwCDLFS08d_399-yi2xqQ2I",
+  "Nonce": "636686270194201073.YTNmZGU1OTktNDllMC00NGE0LWEzOWQtZjdjMzdhNjdiOTJkOWU1MzliNzEtMTUyZC00ZmE2LTk0YTgtMmU3NjUzYzYyNDgy",
+  "SessionId": "0a3c8a487198d8493883734cbab573d1",
+  "Raw": {
+    "client_id": "mvc",
+    "redirect_uri": "http://localhost:5002/signin-oidc",
+    "response_type": "code id_token",
+    "scope": "openid profile api1 offline_access",
+    "response_mode": "form_post",
+    "nonce": "636686270194201073.YTNmZGU1OTktNDllMC00NGE0LWEzOWQtZjdjMzdhNjdiOTJkOWU1MzliNzEtMTUyZC00ZmE2LTk0YTgtMmU3NjUzYzYyNDgy",
+    "state": "CfDJ8KuqC1l7QeZCrHnUtlrKrzJES7Wd9AKXs3mxa2yOdi-YfjOuXKTR8rnFZG1PpJhv3r-eU0C5akTvOJmncvxIEKsysRiNOq9SW05a6jKLthyCfi7jJJqSOkt492-6IrYHKaFDbfRnlRUQd_qv0z0Uchw1OL1zmOpodxbGSsmDyn-NpDs28FjepNqRjdrwCUMm3cIT_UaFZOiQfkNTDtgRZvujvs8xpuhAFRFEbN8Dt7LzmDLbW05yaNzznqQF1rD2twDo_BMM_4piXC7wN-_MrUsjKgzB-E_e72NBnZeOl-TKT5GrnC11gnSSnUMH7-5LDwCDLFS08d_399-yi2xqQ2I",
+    "x-client-SKU": "ID_NET",
+    "x-client-ver": "2.1.4.0"
+  }
+}
+2018-07-31 12:43:39.811 +03:00 [INF] Showing login: User is not active
+2018-07-31 12:43:39.878 +03:00 [DBG] Start authorize request protocol validation
+2018-07-31 12:43:39.911 +03:00 [DBG] mvc found in database: true
+2018-07-31 12:43:39.913 +03:00 [DBG] Checking for PKCE parameters
+2018-07-31 12:43:39.915 +03:00 [DBG] No PKCE used.
+2018-07-31 12:43:39.925 +03:00 [DBG] Found ["openid","profile"] identity scopes in database
+2018-07-31 12:43:39.941 +03:00 [DBG] Found ["api1"] API scopes in database
+2018-07-31 12:43:39.950 +03:00 [DBG] Found ["openid","profile"] identity scopes in database
+2018-07-31 12:43:39.968 +03:00 [DBG] Found ["api1"] API scopes in database
+2018-07-31 12:43:39.972 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2018-07-31 12:43:40.005 +03:00 [DBG] mvc found in database: true
+2018-07-31 12:43:52.643 +03:00 [DBG] CORS request made for path: /account/login from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2018-07-31 12:43:52.812 +03:00 [INF] {
+  "Name": "User Login Failure",
+  "Category": "Authentication",
+  "EventType": "Failure",
+  "Id": 1001,
+  "Username": "andrei_krasnou@epam.com",
+  "Endpoint": "UI",
+  "Message": "invalid credentials",
+  "ActivityId": "0HLFMP7562CH1:00000006",
+  "TimeStamp": "2018-07-31T09:43:52Z",
+  "ProcessId": 29572,
+  "LocalIpAddress": "::1:5000",
+  "RemoteIpAddress": "::1"
+}
+2018-07-31 12:43:52.817 +03:00 [DBG] Start authorize request protocol validation
+2018-07-31 12:43:52.849 +03:00 [DBG] mvc found in database: true
+2018-07-31 12:43:52.851 +03:00 [DBG] Checking for PKCE parameters
+2018-07-31 12:43:52.854 +03:00 [DBG] No PKCE used.
+2018-07-31 12:43:52.862 +03:00 [DBG] Found ["openid","profile"] identity scopes in database
+2018-07-31 12:43:52.877 +03:00 [DBG] Found ["api1"] API scopes in database
+2018-07-31 12:43:52.884 +03:00 [DBG] Found ["openid","profile"] identity scopes in database
+2018-07-31 12:43:52.899 +03:00 [DBG] Found ["api1"] API scopes in database
+2018-07-31 12:43:52.902 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2018-07-31 12:43:52.928 +03:00 [DBG] mvc found in database: true
+2018-07-31 12:44:00.096 +03:00 [DBG] CORS request made for path: /account/login from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2018-07-31 12:44:00.107 +03:00 [DBG] Start authorize request protocol validation
+2018-07-31 12:44:00.141 +03:00 [DBG] mvc found in database: true
+2018-07-31 12:44:00.143 +03:00 [DBG] Checking for PKCE parameters
+2018-07-31 12:44:00.145 +03:00 [DBG] No PKCE used.
+2018-07-31 12:44:00.157 +03:00 [DBG] Found ["openid","profile"] identity scopes in database
+2018-07-31 12:44:00.179 +03:00 [DBG] Found ["api1"] API scopes in database
+2018-07-31 12:44:00.189 +03:00 [DBG] Found ["openid","profile"] identity scopes in database
+2018-07-31 12:44:00.205 +03:00 [DBG] Found ["api1"] API scopes in database
+2018-07-31 12:44:00.209 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2018-07-31 12:44:00.237 +03:00 [DBG] mvc found in database: true
+2018-07-31 12:48:07.305 +03:00 [DBG] CORS request made for path: /account/login from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
+2018-07-31 12:48:41.642 +03:00 [INF] {
+  "Name": "User Login Failure",
+  "Category": "Authentication",
+  "EventType": "Failure",
+  "Id": 1001,
+  "Username": "andrei_krasnou@epam.com",
+  "Endpoint": "UI",
+  "Message": "invalid credentials",
+  "ActivityId": "0HLFMP7562CH1:00000008",
+  "TimeStamp": "2018-07-31T09:48:41Z",
+  "ProcessId": 29572,
+  "LocalIpAddress": "::1:5000",
+  "RemoteIpAddress": "::1"
+}
+2018-07-31 12:48:45.161 +03:00 [DBG] Start authorize request protocol validation
+2018-07-31 12:48:45.219 +03:00 [DBG] mvc found in database: true
+2018-07-31 12:48:45.220 +03:00 [DBG] Checking for PKCE parameters
+2018-07-31 12:48:45.222 +03:00 [DBG] No PKCE used.
+2018-07-31 12:48:45.235 +03:00 [DBG] Found ["openid","profile"] identity scopes in database
+2018-07-31 12:48:45.307 +03:00 [DBG] Found ["api1"] API scopes in database
+2018-07-31 12:48:45.316 +03:00 [DBG] Found ["openid","profile"] identity scopes in database
+2018-07-31 12:48:45.338 +03:00 [DBG] Found ["api1"] API scopes in database
+2018-07-31 12:48:45.341 +03:00 [DBG] Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
+2018-07-31 12:48:45.371 +03:00 [DBG] mvc found in database: true

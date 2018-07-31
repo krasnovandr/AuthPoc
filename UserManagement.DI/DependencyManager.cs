@@ -34,7 +34,8 @@ namespace UserManagement.DI
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders()
                 .AddUserManager<CustomUserManager>()
-                .AddUserStore<ApplicationUserStore>();
+                .AddUserStore<ApplicationUserStore>()
+                .AddSignInManager<ApplicationSignInManager>();
         }
     }
 }

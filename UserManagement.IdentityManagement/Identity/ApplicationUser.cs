@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Microsoft.AspNetCore.Identity;
-using UserManagement.IdentityManagement.Identity;
 
-namespace UserManagement.API.Identity
+namespace UserManagement.IdentityManagement.Identity
 {
     // Add profile data for application users by adding properties to the ApplicationUser class
     public class ApplicationUser : IdentityUser
@@ -12,5 +12,9 @@ namespace UserManagement.API.Identity
             PreviousUserPasswords = new List<PreviousPassword>();
         }
         public virtual IList<PreviousPassword> PreviousUserPasswords { get; set; }
+
+        public bool ChangePasswordRequired { get; set; }
+
+        public DateTime LastPasswordChangedDate { get; set; }
     }
 }

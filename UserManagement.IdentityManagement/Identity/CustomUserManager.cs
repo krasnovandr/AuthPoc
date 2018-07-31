@@ -40,6 +40,7 @@ namespace UserManagement.IdentityManagement.Identity
 
             if (result.Succeeded)
             {
+                await UpdatePasswordInfo(user);
                 await AddPasswordToHistory(user, newPassword);
             }
 
@@ -60,10 +61,18 @@ namespace UserManagement.IdentityManagement.Identity
 
             if (result.Succeeded)
             {
+                await UpdatePasswordInfo(user);
                 await AddPasswordToHistory(user, newPassword);
             }
 
             return result;
+        }
+
+        private async Task UpdatePasswordInfo(ApplicationUser user)
+        {
+            user.ChangePasswordRequired = false;
+            user.LastPasswordChangedDate = DateTime.UtcNow;
+            await UpdateAsync(user);
         }
 
         private async Task AddPasswordToHistory(ApplicationUser user, string newPassword)

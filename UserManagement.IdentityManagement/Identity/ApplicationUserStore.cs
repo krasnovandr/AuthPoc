@@ -9,6 +9,8 @@ namespace UserManagement.IdentityManagement.Identity
 {
     public class ApplicationUserStore : UserStore<ApplicationUser>
     {
+           private const int UsedPasswordLimit = 3;
+
         public ApplicationUserStore(ApplicationDbContext context, IdentityErrorDescriber describer = null) : base(context, describer)
         {
         }

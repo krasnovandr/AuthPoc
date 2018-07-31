@@ -19,6 +19,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using UserManagement.API.Identity;
+using UserManagement.IdentityManagement.Identity;
 
 namespace IdentityServer.Quickstart.Account
 {

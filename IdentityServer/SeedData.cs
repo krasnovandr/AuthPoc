@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using UserManagement.API.Identity;
+using UserManagement.IdentityManagement.Identity;
 
 namespace IdentityServer
 {
@@ -37,7 +38,9 @@ namespace IdentityServer
                     {
                         alice = new ApplicationUser
                         {
-                            UserName = "alice"
+                            UserName = "alice",
+                            ChangePasswordRequired = true,
+                            LastPasswordChangedDate = DateTime.UtcNow
                         };
                         var result = userMgr.CreateAsync(alice, "Pass123$").Result;
                         if (!result.Succeeded)
@@ -70,7 +73,9 @@ namespace IdentityServer
                     {
                         bob = new ApplicationUser
                         {
-                            UserName = "bob"
+                            UserName = "bob",
+                            ChangePasswordRequired = true,
+                            LastPasswordChangedDate = DateTime.UtcNow
                         };
                         var result = userMgr.CreateAsync(bob, "Pass123$").Result;
                         if (!result.Succeeded)

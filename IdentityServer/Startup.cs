@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using UserManagement.API.Identity;
 using UserManagement.DI;
+using UserManagement.IdentityManagement.Identity;
 
 namespace IdentityServer
 {

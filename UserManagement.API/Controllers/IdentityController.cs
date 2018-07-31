@@ -8,6 +8,7 @@ using Microsoft.Extensions.Logging;
 using UserManagement.API.Identity;
 using UserManagement.API.Models;
 using UserManagement.API.Models.Dtos;
+using UserManagement.IdentityManagement.Identity;
 using UserManagement.Notification;
 using UserManagement.Notification.Models;
 
@@ -153,7 +154,8 @@ namespace UserManagement.API.Controllers
             {
                 UserName = registerModel.Email,
                 Email = registerModel.Email,
-
+                ChangePasswordRequired = false,
+                LastPasswordChangedDate = DateTime.UtcNow
             };
 
             var result = await _userManager.CreateAsync(user, registerModel.Password);

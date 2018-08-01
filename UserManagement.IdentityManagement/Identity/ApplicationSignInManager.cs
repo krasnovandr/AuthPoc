@@ -31,7 +31,7 @@ namespace UserManagement.IdentityManagement.Identity
 
             Guard.ArgumentNotNull(nameof(user), user);
 
-            if (user.ChangePasswordRequired || user.LastPasswordChangedDate.AddDays(PasswordExpiresInDays) > DateTime.UtcNow)
+            if (user.ChangePasswordRequired || user.LastPasswordChangedDate.AddDays(3) < DateTime.UtcNow)
             {
                 return SignInResult.NotAllowed;
             }

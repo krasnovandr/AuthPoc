@@ -19,7 +19,12 @@ namespace UserManagement.IdentityManagement.Identity
         {
             var identity = await base.CreateAsync(user, cancellationToken);
 
+            //for external idps we don't store our passwords
+            if (string.IsNullOrEmpty(user.PasswordHash)  ==false)
+            {
             await AddToPreviousPasswordsAsync(user, user.PasswordHash);
+
+            }
 
             return identity;
         }

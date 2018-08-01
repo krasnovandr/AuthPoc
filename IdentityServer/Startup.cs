@@ -1,11 +1,16 @@
 ﻿using System;
+using System.Globalization;
 using System.Reflection;
+using System.Threading.Tasks;
+using IdentityServer4;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 using Microsoft.IdentityModel.Tokens;
 using UserManagement.API.Identity;
 using UserManagement.DI;
@@ -71,24 +76,24 @@ namespace IdentityServer
                 throw new Exception("need to configure key material");
             }
 
-            //services.AddAuthentication()
-            //    .AddGoogle(options =>
-            //    {
-            //        options.ClientId = "708996912208-9m4dkjb5hscn7cjrn5u0r4tbgkbj1fko.apps.googleusercontent.com";
-            //        options.ClientSecret = "wdfPY6t8H8cecgjlxud__4Gh";
-            //    })
-            //    .AddOpenIdConnect("oidc", "OpenID Connect", options =>
-            //    {
-            //        options.Authority = "https://demo.identityserver.io/";
-            //        options.ClientId = "implicit";
-            //        options.SaveTokens = true;
 
-            //        options.TokenValidationParameters = new TokenValidationParameters
-            //        {
-            //            NameClaimType = "name",
-            //            RoleClaimType = "role"
-            //        };
-            //    });
+            services.AddOidcStateDataFormatterCache();
+
+            var authority = $"https://login.microsoftonline.com/{Configuration["AzureAdTenant"]}";
+            services.AddAuthentication()
+                .AddGoogle(options =>
+                {
+                    options.ClientId = Configuration["GoogleAPICLientID"];
+                    options.ClientSecret = Configuration["GoogleAPISecretKey"];
+                    options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
+                })
+                .AddOpenIdConnect("oidc", "Azure AD For Corporate Users", options =>
+                {
+                    options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
+                    options.ClientId = Configuration["AzureAdClientId"];
+                    options.Authority = authority;
+                    options.ResponseType = OpenIdConnectResponseType.IdToken;
+                });
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -105,6 +110,8 @@ namespace IdentityServer
 
             app.UseStaticFiles();
             app.UseIdentityServer();
+
+
             app.UseMvcWithDefaultRoute();
         }
     }
